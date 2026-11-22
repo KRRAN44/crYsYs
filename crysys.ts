@@ -133,56 +133,38 @@ async function connectToWhatsApp() {
 
 const PREFIX = "@";
 
-function obtenerTexto(msg: any): string {
-  const message = msg.message;
+async function ejecutarComando(sock: any, msg: any) {
+  if (!msg.message || msg.key.fromMe) return;
 
-  return (
-    message?.conversation ||
-    message?.extendedTextMessage?.text ||
-    message?.imageMessage?.caption ||
-    message?.videoMessage?.caption ||
-    message?.documentMessage?.caption ||
-    ""
-  ).trim();
+  const chat = msg.key.remoteJid;
+  if (!chat) return;
+
+  const texto = obtenerTexto(msg);
+
+  // Comprueba si empieza con @
+  if (!texto.startsWith(PREFIX)) return;
+
+  // Separa el nombre del comando y sus argumentos
+  const partes = texto.slice(PREFIX.length).trim().split(/\s+/);
+
+  const nombre = partes.shift()?.toLowerCase();
+  const args = partes;
+
+  if (!nombre) return;
+
+  // Busca el comando
+  const comando = commands.get(nombre);
+
+  if (!comando) return;
+
+  // Ejecuta el comando
+  await comando.execute({
+    sock,
+    msg,
+    chat,
+    args,
+    texto,
+    nombre
+  });
 }
-
-async function ejecutarComando(
-  sock: ReturnType<typeof makeWASocket>,
-  msg: any
-) {
-  try {
-    if (!msg.message || msg.key.fromMe) return;
-
-    const chat = msg.key.remoteJid;
-    if (!chat) return;
-
-    const texto = obtenerTexto(msg);
-
-    if (!texto.startsWith(PREFIX)) return;
-
-    const argumentos = texto.slice(PREFIX.length).trim().split(/\s+/);
-
-    const nombre = argumentos.shift()?.toLowerCase();
-
-    if (!nombre) return;
-
-    const args = argumentos;
-    const comando = commands.get(nombre);
-
-    if (!comando) return;
-
-    await comando.execute({
-      sock,
-      msg,
-      chat,
-      args,
-      texto,
-      nombre
-    });
-
-  } catch (error) {
-    console.error("Error ejecutando comando:", error);
-  }
-}
-
 connectToWhatsApp()
