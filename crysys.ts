@@ -6,7 +6,9 @@ import makeWASocket, {
 import { Boom } from '@hapi/boom'
 import qrcode from 'qrcode-terminal'
 import P from 'pino'
+// Varibles para colores
 
+// xddddd
 const infoOriginal = console.info
 console.info = (...args: unknown[]) => {
   if (typeof args[0] === 'string' && args[0].includes('Closing session')) return
