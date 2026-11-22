@@ -131,4 +131,58 @@ async function connectToWhatsApp() {
   console.log(chalk.bgGreen.white(`▏🍀 ╴ ║ Comandos Disponibles: ${commands.size}`));
 
 
+const PREFIX = "@";
+
+function obtenerTexto(msg: any): string {
+  const message = msg.message;
+
+  return (
+    message?.conversation ||
+    message?.extendedTextMessage?.text ||
+    message?.imageMessage?.caption ||
+    message?.videoMessage?.caption ||
+    message?.documentMessage?.caption ||
+    ""
+  ).trim();
+}
+
+async function ejecutarComando(
+  sock: ReturnType<typeof makeWASocket>,
+  msg: any
+) {
+  try {
+    if (!msg.message || msg.key.fromMe) return;
+
+    const chat = msg.key.remoteJid;
+    if (!chat) return;
+
+    const texto = obtenerTexto(msg);
+
+    if (!texto.startsWith(PREFIX)) return;
+
+    const argumentos = texto.slice(PREFIX.length).trim().split(/\s+/);
+
+    const nombre = argumentos.shift()?.toLowerCase();
+
+    if (!nombre) return;
+
+    const args = argumentos;
+    const comando = commands.get(nombre);
+
+    if (!comando) return;
+
+    await comando.execute({
+      sock,
+      msg,
+      chat,
+      args,
+      texto,
+      nombre
+    });
+
+  } catch (error) {
+    console.error("Error ejecutando comando:", error);
+  }
+}
+
 connectToWhatsApp()
