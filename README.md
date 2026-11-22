@@ -1,2 +1,2 @@
-# CrysysBot WhatsApp compilado en TypeScript
+# CrysysBot || TypeScript
 Crysys
