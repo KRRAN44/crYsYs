@@ -1,5 +1,5 @@
 # Crysys
 
-╭─────────╯ 🫟 ╰─────────╮
-CrysysBot || TypeScript
+╭─────────╯ 🫟 ╰─────────╮\n
+CrysysBot || TypeScript \n
 ╰─────────╮ 🫟 ╭─────────╯
