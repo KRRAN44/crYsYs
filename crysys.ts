@@ -7,6 +7,12 @@ import { Boom } from '@hapi/boom'
 import qrcode from 'qrcode-terminal'
 import P from 'pino'
 import chalk from "chalk"
+import fs from "node:fs";
+import path from "node:path";
+import { pathToFileURL } from "node:url";
+
+// carpeta de comandos 
+const dir = "./moka";
 
 const infoOriginal = console.info
 console.info = (...args: unknown[]) => {
@@ -116,6 +122,13 @@ async function connectToWhatsApp() {
       enviarConInfo(sock, miNumero, `.ฺ 𓏲ּׄ᠂     🍺̶⃝͢             𝑪͢𝑹𖾔̷̸𝒀̸̷𖾔𝑺𖾔𝒀̷̸͢𖾔𝑺`)
     }
   })
+  export const commands = new Map();
+  for (const file of fs.readdirSync(dir).filter(f => /\.(ts|js)$/.test(f))) {
+    const cmd = (await import(pathToFileURL(path.resolve(dir, file)).href)).default;
+    if (cmd?.name) commands.set(cmd.name, cmd);
+}
+
+console.log(`Crysis: ${commands.size} comandos cargados.`);
 }
 
 connectToWhatsApp()
