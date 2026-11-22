@@ -7,9 +7,7 @@ import { Boom } from '@hapi/boom'
 import qrcode from 'qrcode-terminal'
 import P from 'pino'
 import chalk from "chalk"
-// Varibles para colores
 
-// xddddd
 const infoOriginal = console.info
 console.info = (...args: unknown[]) => {
   if (typeof args[0] === 'string' && args[0].includes('Closing session')) return
@@ -97,7 +95,7 @@ async function connectToWhatsApp() {
     const { connection, lastDisconnect, qr } = update
 
     if (qr) {
-      console.log(chalk.green(`▏🍀 ╴ ║ Escanea El Codigo QR:`))
+      console.log(chalk.bgGreen.white(`▏🍀 ╴ ║ Escanea El Codigo QR:`))
       qrcode.generate(qr, { small: true })
     }
 
@@ -105,14 +103,14 @@ async function connectToWhatsApp() {
       const statusCode = (lastDisconnect?.error as Boom)?.output?.statusCode
       const shouldReconnect = statusCode !== DisconnectReason.loggedOut
       // log para conexion cerrada
-      console.log(`▏🍀 ╴ ╚════╕ Conexion Cerrada!💔.. ¿Esta Intentando Reconectar 🔥?? =`, shouldReconnect)
+      console.log(chalk.bgGreen.white(`▏🍀 ╴ ╚════╕ Conexion Cerrada!💔.. ¿Esta Intentando Reconectar 🔥?? =`, shouldReconnect))
 
       if (shouldReconnect) connectToWhatsApp()
     } else if (connection === 'open') {
       // logs para conexion exitosa
-      console.log(`▏🍀 ╴ ╔════╛`)
-      console.log(`▏🍀 ╴ ║ CRYSYS CONECTADO EXITOSAMENTE 🥳`)
-      console.log(`▏🍀 ╴ ╚══════╕╒═╕╒══╕`)
+      console.log(chalk.bgGreen.white(`▏🍀 ╴ ╔════╛`))
+      console.log(chalk.bgGreen.white(`▏🍀 ╴ ║ CRYSYS CONECTADO EXITOSAMENTE 🥳`))
+      console.log(chalk.bgGreen.white(`▏🍀 ╴ ╚══════╕╒═╕╒══╕`))
       // Mensaje de prueba a tu mismo número (bórralo cuando ya no lo necesites)
       const miNumero = sock.user!.id.split(':')[0] + '@s.whatsapp.net'
       enviarConInfo(sock, miNumero, `.ฺ 𓏲ּׄ᠂     🍺̶⃝͢             𝑪͢𝑹𖾔̷̸𝒀̸̷𖾔𝑺𖾔𝒀̷̸͢𖾔𝑺`)
