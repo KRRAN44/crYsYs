@@ -48,7 +48,7 @@ function armarContexto(): proto.IContextInfo {
 
   if (INFO.reenviado || INFO.canal.activo) {
     contexto.isForwarded = true
-    contexto.forwardingScore = 1
+    contexto.forwardingScore = 40
   }
 
   if (INFO.canal.activo) {
