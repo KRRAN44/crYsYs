@@ -1,6 +1,6 @@
 # Crysys
 
 ╭─────────╯ 
- CrysysBotTypeScript
+ CrysysBot || TypeScript
 ╰─────────╮
 
