@@ -94,7 +94,7 @@ async function connectToWhatsApp() {
     const { connection, lastDisconnect, qr } = update
 
     if (qr) {
-      console.log('📱 Escanea este QR en WhatsApp → Dispositivos vinculados:')
+      console.log(`▏🍀 ╴ ║ Escanea El Codigo QR:`)
       qrcode.generate(qr, { small: true })
     }
 
@@ -102,7 +102,7 @@ async function connectToWhatsApp() {
       const statusCode = (lastDisconnect?.error as Boom)?.output?.statusCode
       const shouldReconnect = statusCode !== DisconnectReason.loggedOut
       // log para conexion cerrada
-      console.log('❌ Conexión cerrada. ¿Reconectar?', shouldReconnect)
+      console.log(`▏🍀 ╴ ║ Conexion Cerrada!💔.. Intentando Reconectar💢..`, shouldReconnect)
 
       if (shouldReconnect) connectToWhatsApp()
     } else if (connection === 'open') {
