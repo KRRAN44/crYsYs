@@ -122,13 +122,13 @@ async function connectToWhatsApp() {
       enviarConInfo(sock, miNumero, `.ฺ 𓏲ּׄ᠂     🍺̶⃝͢             𝑪͢𝑹𖾔̷̸𝒀̸̷𖾔𝑺𖾔𝒀̷̸͢𖾔𝑺`)
     }
   })
+}
   export const commands = new Map();
   for (const file of fs.readdirSync(dir).filter(f => /\.(ts|js)$/.test(f))) {
     const cmd = (await import(pathToFileURL(path.resolve(dir, file)).href)).default;
     if (cmd?.name) commands.set(cmd.name, cmd);
     }
+  console.log(chalk.bgGreen.white(`▏🍀 ╴ ║ Comandos Disponibles: ${commands.size}`));
 
-console.log(chalk.bgGreen.white(`▏🍀 ╴ ║ Comandos Disponibles: ${commands.size}));
-}
 
 connectToWhatsApp()
