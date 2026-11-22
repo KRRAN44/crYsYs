@@ -107,9 +107,9 @@ async function connectToWhatsApp() {
       if (shouldReconnect) connectToWhatsApp()
     } else if (connection === 'open') {
       // logs para conexion exitosa
-      console.log(``)
-      console.log(``)
-      console.log(``)
+      console.log(`▏🍀 ╴ ╔════╛`)
+      console.log(`▏🍀 ╴ ║ CRYSYS CONECTADO EXITOSAMENTE 🥳`)
+      console.log(`▏🍀 ╴ ╚══════╕╒═╕╒══╕`)
       // Mensaje de prueba a tu mismo número (bórralo cuando ya no lo necesites)
       const miNumero = sock.user!.id.split(':')[0] + '@s.whatsapp.net'
       enviarConInfo(sock, miNumero, `.ฺ 𓏲ּׄ᠂     🍺̶⃝͢             𝑪͢𝑹𖾔̷̸𝒀̸̷𖾔𝑺𖾔𝒀̷̸͢𖾔𝑺`)
