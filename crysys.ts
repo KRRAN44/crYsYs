@@ -126,9 +126,9 @@ async function connectToWhatsApp() {
   for (const file of fs.readdirSync(dir).filter(f => /\.(ts|js)$/.test(f))) {
     const cmd = (await import(pathToFileURL(path.resolve(dir, file)).href)).default;
     if (cmd?.name) commands.set(cmd.name, cmd);
-}
+    }
 
-console.log(`Crysis: ${commands.size} comandos cargados.`);
+console.log(chalk.bgGreen.white(`▏🍀 ╴ ║ Comandos Disponibles: ${commands.size}));
 }
 
 connectToWhatsApp()
