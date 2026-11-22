@@ -97,7 +97,7 @@ async function connectToWhatsApp() {
     const { connection, lastDisconnect, qr } = update
 
     if (qr) {
-      console.log(`▏🍀 ╴ ║ Escanea El Codigo QR:`)
+      console.log(chalk.green(`▏🍀 ╴ ║ Escanea El Codigo QR:`))
       qrcode.generate(qr, { small: true })
     }
 
