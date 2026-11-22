@@ -6,6 +6,7 @@ import makeWASocket, {
 import { Boom } from '@hapi/boom'
 import qrcode from 'qrcode-terminal'
 import P from 'pino'
+import chalk from "chalk"
 // Varibles para colores
 
 // xddddd
