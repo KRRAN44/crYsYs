@@ -81,7 +81,7 @@ async function enviarConInfo(
 }
 
 async function connectToWhatsApp() {
-  const { state, saveCreds } = await useMultiFileAuthState('auth_info')
+  const { state, saveCreds } = await useMultiFileAuthState('../sessions/CrysysCreditsSessions')
 
   const sock = makeWASocket({
     auth: state,
