@@ -61,7 +61,7 @@ function armarContexto(): proto.IContextInfo {
 
   if (INFO.reenviado || INFO.canal.activo) {
     contexto.isForwarded = true
-    contexto.forwardingScore = 40
+    contexto.forwardingScore = 67
   }
 
   if (INFO.canal.activo) {
@@ -157,7 +157,7 @@ async function cargarComandos() {
   }
 
   // se cuentan los comandos, no sus alias
-  console.log(chalk.bgGreen.white(`▏🍀 ╴ ║ Comandos Disponibles: ${new Set(commands.values()).size}`));
+  console.log(chalk.green(`▏🍀 ╴ ║ Comandos Disponibles: ${new Set(commands.values()).size}`));
 }
 
 // ===== RECIBIR MENSAJES Y EJECUTAR COMANDOS =====
@@ -225,7 +225,7 @@ async function ejecutarComando(sock: Sock, msg: any) {
       recordar(yaEjecutados, msg.key.id);
     }
 
-    console.log(chalk.bgGreen.white(`▏🍀 ╴ ║ Ejecutando ${PREFIX}${nombre}${msg.key.fromMe ? " (desde el número del bot)" : ""}`));
+    console.log(chalk.white(`▏🍀 ╴ ║ Ejecutando ${PREFIX}${nombre}${msg.key.fromMe ? " (desde el número del bot)" : ""}`));
 
     // Igual que en moka/Ping.ts: execute(sock, msg, args, extra)
     await comando.execute(sock, msg, args, { chat, texto, nombre });
@@ -271,7 +271,7 @@ async function connectToWhatsApp() {
     const { connection, lastDisconnect, qr } = update
 
     if (qr) {
-      console.log(chalk.bgGreen.white(`▏🍀 ╴ ║ Escanea El Codigo QR:`))
+      console.log(chalk.green(`▏🍀 ╴ ║ Escanea El Codigo QR:`))
       qrcode.generate(qr, { small: true })
     }
 
@@ -279,15 +279,15 @@ async function connectToWhatsApp() {
       const statusCode = (lastDisconnect?.error as Boom)?.output?.statusCode
       const shouldReconnect = statusCode !== DisconnectReason.loggedOut
       // log para conexion cerrada
-      console.log(chalk.bgGreen.white(`▏🍀 ╴ ╚════╕ Conexion Cerrada!💔.. ¿Esta Intentando Reconectar 🔥?? =`, shouldReconnect))
+      console.log(chalk.green(`▏🍀 ╴ ╚════╕ Conexion Cerrada!💔.. ¿Esta Intentando Reconectar 🔥?? =`, shouldReconnect))
 
       // espera 3 segundos antes de reconectar (así no se satura si falla varias veces seguidas)
       if (shouldReconnect) setTimeout(connectToWhatsApp, 3000)
     } else if (connection === 'open') {
       // logs para conexion exitosa
-      console.log(chalk.bgGreen.white(`▏🍀 ╴ ╔════╛`))
-      console.log(chalk.bgGreen.white(`▏🍀 ╴ ║ CRYSYS CONECTADO EXITOSAMENTE 🥳`))
-      console.log(chalk.bgGreen.white(`▏🍀 ╴ ╚══════╕╒═╕╒══╕`))
+      console.log(chalk.green(`▏🍀 ╴ ╔════╛`))
+      console.log(chalk.green(`▏🍀 ╴ ║ CRYSYS CONECTADO EXITOSAMENTE 🥳`))
+      console.log(chalk.green(`▏🍀 ╴ ╚══════╕╒═╕╒══╕`))
       // Mensaje de prueba a tu mismo número (bórralo cuando ya no lo necesites)
       const miNumero = sock.user!.id.split(':')[0] + '@s.whatsapp.net'
       enviarConInfo(sock, miNumero, INFO.canal.nombre)
