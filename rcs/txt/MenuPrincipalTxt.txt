@@ -1,7 +1,25 @@
 
 
 へ゜ 𝙲𝛂꯭𝚖𝚤  ࿆   ꧇   𝙈𝙀𝙉𝙐  🍒 𝙈𝙄𝙀𝙈𝘽𝙍𝙊𝙎
-      ּ.  ゙#꯭🫆⃰⃝      @  ――   `ping`
-      ּ.  ゙#꯭🫆⃰⃝      @  ――   `menu`
+      ּ.  ゙#꯭🫆⃰⃝      @  ――   `Ping`
+      ּ.  ゙#꯭🫆⃰⃝      @  ――   `Menu`
 
 へ゜ 𝙲𝛂꯭𝚖𝚤  ࿆   ꧇   𝙈𝙀𝙉𝙐  🍒 𝘼𝘿𝙈𝙄𝙉𝙎
+      ּ.  ゙#꯭       @  ――   `Promote`
+      ּ.  ゙#꯭       @  ――   `Demote`
+
+      ּ.  ゙#꯭       @  ――   `Warn`
+      ּ.  ゙#꯭       @  ――   `unWarn`
+      ּ.  ゙#꯭       @  ――   `WarnList`
+
+      ּ.  ゙#꯭       @  ――   `Mute`
+      ּ.  ゙#꯭       @  ――   `unMute`
+
+      ּ.  ゙#꯭       @  ――   `Bienvenida`
+      ּ.  ゙#꯭       @  ――   `Despedida`
+
+      ּ.  ゙#꯭       @  ――   `#Bienvenida`
+      ּ.  ゙#꯭       @  ――   `#Despedida`
+
+      ּ.  ゙#꯭       @  ――   `Bienvenida2`
+      ּ.  ゙#꯭       @  ――   `#Bienvenida2`
